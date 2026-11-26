@@ -7,6 +7,9 @@
     ":semanticCommits",
   ],
   labels: ["renovate"],
+  dockerfile: {
+    managerFilePatterns: ["/^Earthfile$/"],
+  },
   customManagers: [
     {
       customType: "regex",
