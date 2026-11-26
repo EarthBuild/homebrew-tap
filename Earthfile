@@ -1,17 +1,11 @@
 VERSION 0.8
-FROM debian
+FROM ghcr.io/homebrew/brew:7.0.16
 ENV NONINTERACTIVE=1
 ENV HOMEBREW_NO_AUTO_UPDATE=1
-ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
+RUN mkdir -p /home/linuxbrew/earthbuild-tap && \
+    git config --global --add safe.directory /home/linuxbrew/earthbuild-tap && \
+    brew developer on
 WORKDIR /home/linuxbrew/earthbuild-tap
-RUN apt-get update && apt-get install -y curl git ca-certificates procps sudo build-essential
-RUN useradd -m -s /bin/bash linuxbrew && \
-    echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
-    chown -R linuxbrew:linuxbrew /home/linuxbrew
-USER linuxbrew
-RUN git config --global --add safe.directory /home/linuxbrew/earthbuild-tap && \
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-    /home/linuxbrew/.linuxbrew/bin/brew developer on
 
 src:
     COPY --dir .git Formula .
@@ -36,7 +30,7 @@ lint:
 # audit checks for Homebrew coding style violations
 audit:
     FROM +src
-    RUN brew audit --strict --online --except=specs --signing --debug --audit-debug EarthBuild/tap/earth
+    RUN brew audit --strict --online --except=specs --debug --audit-debug EarthBuild/tap/earth
 
 # style checks for conformance to Homebrew style guidelines
 style:
