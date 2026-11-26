@@ -7,22 +7,22 @@ class Earth < Formula
   on_macos do
     on_arm do
       url "https://github.com/EarthBuild/earthbuild/releases/download/v#{version}/earth-darwin-arm64"
-      sha256 "c485ba6ffbd9de9574deb2fd07d3b9ba1e04471c9d21f7074863ccfe8d07901c"
+      sha256 "44326ae9c9d3add654c9bfc0f8a32378397c251836fb885353c6c439a15a9a74"
     end
     on_intel do
       url "https://github.com/EarthBuild/earthbuild/releases/download/v#{version}/earth-darwin-amd64"
-      sha256 "9b45d3ece50e287d1711041ce7113cb045c03b629f94df177bf74415e7de8088"
+      sha256 "5eb154ad807144e6227a66fdf50511b39b8547459fb1190e6b85a582e601d8ee"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/EarthBuild/earthbuild/releases/download/v#{version}/earth-linux-arm64"
-      sha256 "46cc0fc77357a805e161e188bd37ea518fc4c4ec53262f926159efdd18d2f2dd"
+      sha256 "b78d374ee5c481806f0025ae2a088231689b1c41c1a8633b4c0ed1acd57a9d1b"
     end
     on_intel do
       url "https://github.com/EarthBuild/earthbuild/releases/download/v#{version}/earth-linux-amd64"
-      sha256 "485679af8d21d5a87daaf3780e58ca6e7dd85f7710d6f51da76e17bb28261fd1"
+      sha256 "e85ac1221f3297f0a85e5b06fd3956d624b734973c2e4313183e8d61ae67dac1"
     end
   end
 
